@@ -89,9 +89,21 @@ fun main() {
     }
     println(greetings)
 
-    greeting("Aleks",3)
+    greeting("Aleks", 3)
     greeting2("Sipsik", repeat = 5)
-    
+    homeworkNumbers(10, 10)
+    println(double(4))
+
+    println(getSum(2,2,2,3))
+
+    val array = intArrayOf(1,2,645,8,6786)
+    println(getSum2(2,4,6,7,8,3,234,*array,234,56,7))           // * - Symbol makes int to intArray . Without * appears ERROR.
+
+    val array2 = intArrayOf(11,22,64,8,645)
+    println(biggestOneInArray(0,65,3,*array2))
+
+
+
 }
 
 fun greeting(name: String, repeat: Int) {
@@ -107,6 +119,39 @@ fun greeting2(name: String, repeat: Int) {
         count--
     }
 }
+
+fun homeworkNumbers(firstNumber: Int, secondNumber: Int) {
+    val result = when {
+        firstNumber > secondNumber -> "The bigger number vas FIRST NUMBER : $firstNumber"
+        secondNumber > firstNumber -> "The bigger number vas SECOND NUMBER : $secondNumber"
+        else -> "Numbers are equals, I will print second one : $secondNumber"
+    }
+    println(result)
+}
+
+fun double(num: Int): Int = num * 2         // We don't need to call return if its single line expression
+
+fun getMax(b: Int, a: Int) = if (b > a) b else a            // Short way to check
+fun getMax(b: Double, a: Double) = if (b > a) b else a            // Short way to check
+
+fun getSum(num1: Int, num2: Int, num3: Int = 0, num4: Int = 0) = num1 + num2 + num3 + num4
+
+fun getSum2(vararg numbers: Int):Int {
+    var sum = 0
+    for (number in numbers) sum += number
+    return sum
+}
+
+fun biggestOneInArray(nFirst: Int, vararg nArray: Int): Int {
+    var result = nFirst
+        for (number in nArray) {
+            if (number > result) result = number
+        }
+        return result
+    }
+
+
+
 
 
 
